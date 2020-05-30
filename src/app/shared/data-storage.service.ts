@@ -4,13 +4,15 @@ import { map, tap } from 'rxjs/operators';
 
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
     private recipesUrl = 'https://udemy-angular-course-59dcf.firebaseio.com/recipes.json';
 
     constructor(private http: HttpClient,
-        private recipeService: RecipeService) { }
+        private recipeService: RecipeService,
+        private authService: AuthService) { }
 
     storeRecipes() {
         const recipes = this.recipeService.getRecipes();
